@@ -1,4 +1,5 @@
 import React from "react";
+import ChooseUs from "../chooseUs/ChooseUs";
 import HeroSection from "../heroSection/HeroSection";
 import Services from "../services/Services";
 
@@ -7,6 +8,7 @@ function Home() {
     <main>
       <HeroSection />
       <Services />
+      <ChooseUs />
     </main>
   );
 }

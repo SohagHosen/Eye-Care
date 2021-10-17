@@ -3,7 +3,7 @@ import "./service.css";
 function Service({ service }) {
   const { img, title, desc } = service;
   return (
-    <div className="w-96 sm:w-84 mx-auto text-gray-900">
+    <div className="w-auto sm:w-84 mx-auto text-gray-900">
       <div>
         <img src={img} alt="service" className=" rounded-lg shadow-md" />
 

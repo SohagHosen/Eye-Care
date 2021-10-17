@@ -5,7 +5,7 @@ import { AiFillGithub, AiFillTwitterCircle } from "react-icons/ai";
 import logo from "../../assets/images/logo.png";
 function Footer() {
   return (
-    <footer class="px-4 divide-y bg-gray-900 text-white mt-32">
+    <footer class="px-4 divide-y bg-gray-900 text-white mt-10">
       <div class="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
         <div class="lg:w-1/3">
           <a href="#" class="flex justify-center space-x-3 lg:justify-start">
