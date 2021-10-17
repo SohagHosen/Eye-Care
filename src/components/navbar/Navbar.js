@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import logo from "../../assets/images/logo.png";
 function Navbar() {
   const [toggleNav, setToggleNav] = useState(false);
@@ -11,10 +12,9 @@ function Navbar() {
         <div className="block md:hidden">
           <button
             onClick={() => setToggleNav(!toggleNav)}
-            className="flex items-center px-3 py-2 border border-opacity-25 rounded   hover:text-white hover:border-white"
+            className="flex items-center px-2 py-1 border border-opacity-25 rounded   hover:text-white hover:border-white"
           >
-            {/* <FontAwesomeIcon icon={faBars} /> */}
-            icon
+            <HiOutlineMenuAlt1 className="text-2xl" />
           </button>
         </div>
         <div className="flex items-center flex-shrink-0 text-white md:mr-6">
