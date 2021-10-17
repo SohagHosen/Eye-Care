@@ -1,11 +1,13 @@
 import React from "react";
 import HeroSection from "../heroSection/HeroSection";
+import Services from "../services/Services";
 
 function Home() {
   return (
-    <div>
+    <main>
       <HeroSection />
-    </div>
+      <Services />
+    </main>
   );
 }
 
