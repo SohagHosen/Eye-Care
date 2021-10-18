@@ -4,11 +4,12 @@ import { AiOutlineMail } from "react-icons/ai";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsTelephone } from "react-icons/bs";
 import "./contact.css";
+import logo from "../../assets/images/logo.png";
 function Contact() {
   return (
     <>
       <section className="header flex justify-center items-center">
-        <h1 className="text-5xl md:text-9xl text-white font-extrabold">
+        <h1 className="text-5xl md:text-9xl text-white font-extrabold text-indigo-500">
           Contact US
         </h1>
       </section>
@@ -17,7 +18,13 @@ function Contact() {
         className=" md:flex justify-center items-center "
       >
         <section class="w-full md:w-2/5 text-center md:text-left my-10 md:my-0">
-          <div>
+          <div className="">
+            <div className="flex justify-center md:justify-start">
+              <img src={logo} className="h-16" alt="" />
+              <h2 className="text-4xl font-bold text-indigo-600 flex items-center ml-3">
+                Eye Care
+              </h2>
+            </div>
             <p className=" text-2xl">
               <BiLinkAlt className="inline mr-2" />
               www.example.com
