@@ -68,6 +68,9 @@ function Contact() {
               placeholder="Enter some long form content."
             />
           </div>
+          <button className="mx-4 mt-5 bg-indigo-500 py-2 w-32 text-white font-bold rounded">
+            Submit
+          </button>
         </form>
       </section>
     </>
