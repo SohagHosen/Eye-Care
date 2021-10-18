@@ -26,14 +26,7 @@ function useFirebase() {
   };
 
   const signIn = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        setUser(user);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    return signInWithEmailAndPassword(auth, email, password);
   };
   const logOut = () => {
     signOut(auth)

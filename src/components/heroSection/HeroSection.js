@@ -1,6 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import banner from "../../assets/images/banner.png";
 function HeroSection() {
+  const history = useHistory();
+  const handleClick = () => {
+    history.push("/about");
+  };
   return (
     <div className="container px-3 md:px-0 mx-auto mt-14">
       <div className="md:flex gap-x-2">
@@ -16,7 +21,10 @@ function HeroSection() {
               as enabling several photo response functions that are independent
               of vision.
             </p>
-            <button className="bg-indigo-500 px-4 py-2 uppercase font-bold text-white mt-3">
+            <button
+              onClick={handleClick}
+              className="bg-indigo-500 px-4 py-2 uppercase font-bold text-white mt-3 rounded"
+            >
               About US
             </button>
           </div>

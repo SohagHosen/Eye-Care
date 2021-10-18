@@ -9,7 +9,7 @@ import Navbar from "./components/navbar/Navbar";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ServiceDetails from "./components/serviceDetails/ServiceDetails";
 import AuthProvider from "./context/AuthProvider";
-
+import NotFound from "./components/notFound/NotFound";
 export default function App() {
   return (
     <AuthProvider>
@@ -23,6 +23,7 @@ export default function App() {
           <PrivateRoute path="/service/:id">
             <ServiceDetails />
           </PrivateRoute>
+          <Route path="*" component={NotFound} />
         </Switch>
         <Footer />
       </Router>

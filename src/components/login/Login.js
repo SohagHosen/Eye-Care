@@ -16,11 +16,7 @@ function Login() {
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     const { email, password, name } = data;
     if (toggleLogin) {
@@ -30,7 +26,8 @@ function Login() {
             displayName: name,
           })
             .then(() => {
-              setUser(userCredential.user);
+              const user = userCredential.user;
+              setUser(user);
               history.replace(from);
             })
             .catch((error) => {
@@ -41,7 +38,15 @@ function Login() {
           console.log(error.message);
         });
     } else {
-      signIn(email, password);
+      signIn(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          setUser(user);
+          history.replace(from);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
     }
   };
 

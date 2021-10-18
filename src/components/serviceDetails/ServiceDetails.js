@@ -7,13 +7,13 @@ function ServiceDetails() {
   const [service, setServices] = useState({});
   let { id } = useParams();
   useEffect(() => {
-    const sv = services.find((service) => service.id == id);
+    const sv = services.find((service) => service.id === parseInt(id));
     if (sv) {
       setServices(sv);
     } else {
       setServices({});
     }
-  }, [service]);
+  }, [service, id]);
 
   return (
     <>

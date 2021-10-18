@@ -17,7 +17,7 @@ function Contact() {
         style={{ height: "400px" }}
         className=" md:flex justify-center items-center "
       >
-        <section class="w-full md:w-2/5 text-center md:text-left my-10 md:my-0">
+        <section className="w-full md:w-2/5 text-center md:text-left my-10 md:my-0">
           <div className="">
             <div className="flex justify-center md:justify-start">
               <img src={logo} className="h-16" alt="" />
@@ -43,27 +43,27 @@ function Contact() {
             </p>
           </div>
         </section>
-        <form class="w-full md:w-2/5">
-          <div class=" px-3">
+        <form className="w-full md:w-2/5">
+          <div className=" px-3">
             <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="email"
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="email"
             >
               Email
             </label>
             <input
-              class="appearance-none block w-full bg-blue-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-blue-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="email"
               type="email"
               placeholder="example@email.com"
             />
           </div>
-          <div class=" px-3 mt-5">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          <div className=" px-3 mt-5">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
               Your Message
             </label>
             <textarea
-              class="appearance-none block w-full bg-blue-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-blue-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               rows="3"
               placeholder="Enter some long form content."
             />

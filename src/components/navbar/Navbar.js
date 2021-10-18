@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { IoMdLogOut } from "react-icons/io";
@@ -28,7 +28,7 @@ function Navbar() {
               <img className="h-10" src={logo} alt="" />
             </Link>
           </div>
-          {user.email ? (
+          {user.displayName ? (
             <div className="md:order-last inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto  sm:pr-0">
               <div className="bg-gray-900 text-white flex items-center justify-center h-8 text-sm rounded-full">
                 <span className="px-3  font-bold">{user.displayName}</span>
@@ -50,7 +50,7 @@ function Navbar() {
             <div className="text-white md:order-last ">
               <button
                 onClick={handleLogin}
-                className=" bg-green-500 hover:text-white px-3 py-2 rounded-md"
+                className=" bg-indigo-600 hover:text-white px-3 py-2 rounded-md"
               >
                 Login
               </button>
@@ -70,14 +70,7 @@ function Navbar() {
               >
                 Home
               </NavLink>
-              <NavLink
-                exact
-                to="/doctors"
-                activeClassName="bg-gray-900 hover:bg-gray-900"
-                className="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white mr-4"
-              >
-                Doctors
-              </NavLink>
+
               <NavLink
                 to="/about"
                 activeClassName="bg-gray-900 hover:bg-gray-900"
