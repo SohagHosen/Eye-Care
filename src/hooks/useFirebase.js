@@ -14,6 +14,7 @@ import initFirebase from "../firebase/initFirebase";
 initFirebase();
 function useFirebase() {
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
@@ -32,6 +33,7 @@ function useFirebase() {
     signOut(auth)
       .then(() => {
         setUser({});
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error.message);
@@ -42,15 +44,27 @@ function useFirebase() {
       if (user) {
         if (user.displayName) {
           setUser(user);
+          setLoading(false);
         } else {
           setUser({});
+          setLoading(false);
         }
       } else {
         setUser({});
+        setLoading(false);
       }
     });
   }, []);
-  return { user, setUser, googleSignIn, logOut, createUser, signIn };
+  return {
+    user,
+    setUser,
+    googleSignIn,
+    logOut,
+    createUser,
+    signIn,
+    loading,
+    setLoading,
+  };
 }
 
 export default useFirebase;
