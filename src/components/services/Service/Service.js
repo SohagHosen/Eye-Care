@@ -1,7 +1,13 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+
 import "./service.css";
 function Service({ service }) {
-  const { img, title, desc } = service;
+  let history = useHistory();
+  const { img, title, desc, id } = service;
+  const handleServiceDetails = () => {
+    history.push(`/service/${id}`);
+  };
   return (
     <div className="w-auto sm:w-84 mx-auto text-gray-900">
       <div>
@@ -15,7 +21,10 @@ function Service({ service }) {
             <div className="mt-4">
               <p className="desc text-sm text-gray-600">{desc}</p>
             </div>
-            <button className="w-full mt-3 bg-indigo-500 py-2 font-bold text-white rounded">
+            <button
+              onClick={handleServiceDetails}
+              className="w-full mt-3 bg-indigo-500 py-2 font-bold text-white rounded"
+            >
               Details
             </button>
           </div>

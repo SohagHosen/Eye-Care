@@ -41,14 +41,14 @@ export default ChooseUs;
 
 const Card = ({ img, title, desc }) => {
   return (
-    <div class="h-72 rounded-lg bg-indigo-500 flex justify-center items-center">
-      <div class="p-8  text-white">
+    <div className="h-72 rounded-lg bg-indigo-500 flex justify-center items-center">
+      <div className="p-8  text-white">
         <img
           className="h-20 mx-auto my-4 bg-white p-3 rounded"
           src={img}
           alt=""
         />
-        <h1 class="text-xl font-bold">{title}</h1>
+        <h1 className="text-xl font-bold">{title}</h1>
         <p>{desc}</p>
       </div>
     </div>
