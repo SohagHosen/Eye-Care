@@ -13,7 +13,7 @@ function ServiceDetails() {
     } else {
       setServices({});
     }
-  }, [service, id]);
+  }, [service]);
 
   return (
     <>
