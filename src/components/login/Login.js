@@ -13,6 +13,7 @@ function Login() {
   const auth = getAuth();
   const { setUser, googleSignIn, createUser, signIn } = useAuth();
   const [toggleLogin, setToggleLogin] = useState(false);
+  const [error, setError] = useState("");
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
@@ -29,13 +30,17 @@ function Login() {
               const user = userCredential.user;
               setUser(user);
               history.replace(from);
+              setError("");
             })
             .catch((error) => {
               console.log(error.message);
+              setError("The email/password that you've entered is incorrect");
             });
+          setError("");
         })
         .catch((error) => {
-          console.log(error.message);
+          console.log(error);
+          setError("The email/password that you've entered is incorrect");
         });
     } else {
       signIn(email, password)
@@ -43,9 +48,10 @@ function Login() {
           const user = userCredential.user;
           setUser(user);
           history.replace(from);
+          setError("");
         })
         .catch((error) => {
-          console.log(error.message);
+          setError("The email/password that you've entered is incorrect");
         });
     }
   };
@@ -110,7 +116,7 @@ function Login() {
               </div>
             )}
 
-            <div className="flex flex-col mb-6">
+            <div className="flex flex-col mb-2">
               <label
                 htmlFor="email"
                 className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
@@ -132,7 +138,7 @@ function Login() {
                 />
               </div>
             </div>
-            <div className="flex flex-col mb-6">
+            <div className="flex flex-col mb-2">
               <label
                 htmlFor="password"
                 className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
@@ -156,8 +162,9 @@ function Login() {
                 />
               </div>
             </div>
+            <span className="text-red-500">{error}</span>
 
-            <div className="flex w-full">
+            <div className="flex w-full mt-5">
               {toggleLogin ? (
                 <button
                   type="submit"
