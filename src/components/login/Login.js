@@ -8,11 +8,10 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { useHistory, useLocation } from "react-router-dom";
 import { getAuth, updateProfile } from "firebase/auth";
-import { wait } from "@testing-library/dom";
 
 function Login() {
   const auth = getAuth();
-  const { setUser, googleSignIn, createUser } = useAuth();
+  const { setUser, googleSignIn, createUser, signIn } = useAuth();
   const [toggleLogin, setToggleLogin] = useState(false);
   let history = useHistory();
   let location = useLocation();
@@ -24,22 +23,26 @@ function Login() {
   } = useForm();
   const onSubmit = (data) => {
     const { email, password, name } = data;
-    createUser(email, password)
-      .then((userCredential) => {
-        updateProfile(auth.currentUser, {
-          displayName: name,
-        })
-          .then(() => {
-            setUser(userCredential.user);
-            history.replace(from);
+    if (toggleLogin) {
+      createUser(email, password)
+        .then((userCredential) => {
+          updateProfile(auth.currentUser, {
+            displayName: name,
           })
-          .catch((error) => {
-            console.log(error.message);
-          });
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+            .then(() => {
+              setUser(userCredential.user);
+              history.replace(from);
+            })
+            .catch((error) => {
+              console.log(error.message);
+            });
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    } else {
+      signIn(email, password);
+    }
   };
 
   const handleGoogleLogin = () => {
