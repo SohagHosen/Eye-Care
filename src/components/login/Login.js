@@ -4,10 +4,55 @@ import { MdOutlineAlternateEmail } from "react-icons/md";
 import { AiFillLock } from "react-icons/ai";
 import { BsArrowRightCircle } from "react-icons/bs";
 import { BiUserPlus, BiUser } from "react-icons/bi";
+import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
+import { useHistory, useLocation } from "react-router-dom";
+import { getAuth, updateProfile } from "firebase/auth";
+import { wait } from "@testing-library/dom";
+
 function Login() {
-  const { googleSignIn } = useAuth();
+  const auth = getAuth();
+  const { setUser, googleSignIn, createUser } = useAuth();
   const [toggleLogin, setToggleLogin] = useState(false);
+  let history = useHistory();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    const { email, password, name } = data;
+    createUser(email, password)
+      .then((userCredential) => {
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        })
+          .then(() => {
+            setUser(userCredential.user);
+            history.replace(from);
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        history.replace(from);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   return (
     <div className=" flex flex-col items-center justify-center my-10">
       <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
@@ -15,7 +60,7 @@ function Login() {
           {toggleLogin ? "Register a new Account" : "Login To Your Account"}
         </div>
         <button
-          onClick={googleSignIn}
+          onClick={handleGoogleLogin}
           className="relative mt-6 border rounded-md py-2 text-sm text-white bg-indigo-500 hover:bg-indigo-400"
         >
           <span className="absolute left-0 top-0 flex items-center  justify-center h-full w-10 text-white">
@@ -31,7 +76,7 @@ function Login() {
           </div>
         </div>
         <div className="mt-10">
-          <form action="#">
+          <form onSubmit={handleSubmit(onSubmit)}>
             {toggleLogin && (
               <div className="flex flex-col mb-6">
                 <label
@@ -46,6 +91,7 @@ function Login() {
                   </div>
 
                   <input
+                    {...register("name")}
                     id="name"
                     type="text"
                     name="name"
@@ -69,6 +115,7 @@ function Login() {
                 </div>
 
                 <input
+                  {...register("email")}
                   id="email"
                   type="email"
                   name="email"
@@ -92,6 +139,7 @@ function Login() {
                 </div>
 
                 <input
+                  {...register("password")}
                   id="password"
                   type="password"
                   name="password"

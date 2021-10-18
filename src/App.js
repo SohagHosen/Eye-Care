@@ -4,6 +4,7 @@ import Footer from "./components/footer/Footer";
 import Home from "./components/home/Home";
 import Login from "./components/login/Login";
 import Navbar from "./components/navbar/Navbar";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ServiceDetails from "./components/serviceDetails/ServiceDetails";
 import AuthProvider from "./context/AuthProvider";
 
@@ -15,7 +16,9 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/service/:id" component={ServiceDetails} />
+          <PrivateRoute path="/service/:id">
+            <ServiceDetails />
+          </PrivateRoute>
         </Switch>
         <Footer />
       </Router>
