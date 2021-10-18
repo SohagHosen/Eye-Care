@@ -71,18 +71,26 @@ function Navbar() {
                 Home
               </NavLink>
               <NavLink
+                exact
+                to="/doctors"
+                activeClassName="bg-gray-900 hover:bg-gray-900"
+                className="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white mr-4"
+              >
+                Doctors
+              </NavLink>
+              <NavLink
                 to="/about"
                 activeClassName="bg-gray-900 hover:bg-gray-900"
                 className="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white mr-4"
               >
-                About
+                About US
               </NavLink>
               <NavLink
                 to="/contact"
                 activeClassName="bg-gray-900 hover:bg-gray-900"
                 className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white"
               >
-                Contact
+                Contact US
               </NavLink>
             </div>
           </div>

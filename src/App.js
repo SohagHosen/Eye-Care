@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 import Home from "./components/home/Home";
 import Login from "./components/login/Login";
@@ -16,6 +17,7 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/contact" component={Contact} />
           <PrivateRoute path="/service/:id">
             <ServiceDetails />
           </PrivateRoute>
