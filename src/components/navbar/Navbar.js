@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
+import { IoMdLogOut } from "react-icons/io";
 import logo from "../../assets/images/logo.png";
+import useAuth from "../../hooks/useAuth";
 function Navbar() {
   const [toggleNav, setToggleNav] = useState(false);
-  const [toggleLogOut, setToggleLogOut] = useState(false);
-  const handleLogin = () => {};
+  const { user, logOut } = useAuth();
+  const history = useHistory();
+  const handleLogin = () => {
+    history.push("/login");
+  };
   return (
     <header className="bg-gray-800 w-full z-10">
       <nav className="px-2 sm:px-5  md:px-10 flex items-center justify-between flex-wrap  text-white py-3 ">
@@ -22,15 +27,20 @@ function Navbar() {
             <img className="h-10" src={logo} alt="" />
           </Link>
         </div>
-        {1 > 0 ? (
+        {user ? (
           <div className="md:order-last inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto  sm:pr-0">
             <div className="bg-gray-900 text-white flex items-center justify-center  text-sm rounded-full">
-              <span className=" px-3 font-bold">user name</span>
+              <span className="px-3 font-bold">{user?.displayName}</span>
               <img
                 className="h-8 w-8 rounded-full"
-                src="https://templates.hibootstrap.com/opnix/default/assets/images/doctors/main1.png"
+                src={user?.photoURL}
                 alt=""
               />
+            </div>
+            <div className="mx-5 flex items-center">
+              <button onClick={logOut}>
+                <IoMdLogOut className="text-3xl" />
+              </button>
             </div>
           </div>
         ) : (
